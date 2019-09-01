@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FadergsFc</string>
     <string name="searchButton">Pesquisar</string>
+    <string name="registerButton">Cadastrar</string>
 </resources>
