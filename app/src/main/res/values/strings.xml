@@ -4,4 +4,5 @@
     <string name="saveButton">Salvar</string>
     <string name="hintPlayer">Name of Player</string>
     <string name="hintTshirt">Number of T-Shirt</string>
+    <string name="registerButton">Cadastrar</string>
 </resources>

@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/pesquisaTime"
         android:layout_width="217dp"
         android:layout_height="45dp"
         android:background="#488B4A"
@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.787" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/digitaTime"
         android:layout_width="217dp"
         android:layout_height="45dp"
         android:ems="10"
@@ -44,5 +44,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.131"
         app:srcCompat="@drawable/jogador" />
+
+    <Button
+        android:id="@+id/registraTime"
+        android:layout_width="217dp"
+        android:layout_height="45dp"
+        android:background="#488B4A"
+        android:text="@string/registerButton"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.866" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
