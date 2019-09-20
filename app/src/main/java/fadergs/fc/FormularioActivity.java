@@ -9,17 +9,17 @@ import android.widget.Button;
 
 public class FormularioActivity extends AppCompatActivity {
 
-    private Button salvaJogadores;
+    private Button activityFormJogadoresBtSalvar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_formulario);
+        setContentView(R.layout.activity_form_jogadores);
 
-        salvaJogadores = findViewById(R.id.salvaJogadores);
+        activityFormJogadoresBtSalvar = findViewById(R.id.activityFormJogadoresBtSalvar);
 
-        salvaJogadores.setOnClickListener(new View.OnClickListener() {
+        activityFormJogadoresBtSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(FormularioActivity.this, MainActivity.class);

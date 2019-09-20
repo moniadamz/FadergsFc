@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormularioActivity"
+    android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/activityFormJogadoresNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome do Jogador"
+                android:layout_margin="8dp"
+                android:inputType="textCapWords"/>
+            <EditText
+                android:id="@+id/activityFormJogadoresCamisa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número da Camisa"
+                android:layout_margin="8dp"
+                android:inputType="number"/>
+            <Button
+                android:id="@+id/activityFormJogadoresBtSalvar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/saveButton"
+                android:background="#488B4A" />
+
+</LinearLayout>

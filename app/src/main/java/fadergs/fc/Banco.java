@@ -15,13 +15,13 @@ public class Banco extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL( "create table if not exists jogadores ( " +
-                " id integer primary key autoincrement," +
+/*        sqLiteDatabase.execSQL( "create table if not exists jogadores ( " +
+                " id integer not null primary key autoincrement," +
                 " nome text ," +
-                " camisa integer );" );
+                " camisa integer );" );*/
 
         sqLiteDatabase.execSQL( "create table if not exists times ( " +
-                " id integer primary key autoincrement," +
+                " id integer not null primary key autoincrement," +
                 " nome text );" );
 
     }
@@ -30,9 +30,6 @@ public class Banco extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
-        sqLiteDatabase.execSQL("drop table if exists times");
-        onCreate(sqLiteDatabase);
 
     }
 }

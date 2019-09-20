@@ -5,9 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.lang.reflect.GenericDeclaration;
-
 public class JogadorDAO {
+
     public void inserir(Context contexto, Jogador jogador){
         Banco banco = new Banco(contexto);
         SQLiteDatabase db = banco.getWritableDatabase();

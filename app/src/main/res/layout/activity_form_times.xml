@@ -1,35 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".FormTimesActivity">
-
-<ScrollView
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".FormTimesActivity"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/activityFormTimesNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="100dp">
+        android:layout_margin="8dp"
+        android:hint="Nome do Time"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="Nome do Time"
-            android:background="#ddd"/>
-        <Button
-            android:id="@+id/criaTimes"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Criar"
-            android:background="#488B4A"
-            android:layout_gravity="center"/>
-    </LinearLayout>
-
-</ScrollView>
+    <Button
+        android:id="@+id/activityFormTimesBtSalvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="#488B4A"
+        android:text="Salvar"/>
 
 </LinearLayout>
