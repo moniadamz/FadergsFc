@@ -19,17 +19,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        digitaTime = (EditText) findViewById(R.id.digitaTime);
-        registraTime = (Button) findViewById(R.id.registraTime);
-        pesquisaTime = (Button) findViewById(R.id.pesquisaTime);
+        digitaTime = findViewById(R.id.digitaTime);
+        registraTime = findViewById(R.id.registraTime);
+        pesquisaTime = findViewById(R.id.pesquisaTime);
+
 
         registraTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, FormularioActivity.class);
+                Intent i = new Intent(MainActivity.this, FormTimesActivity.class);
                 startActivity( i );
             }
         });
+
+
     }
 
 

@@ -20,11 +20,19 @@ public class Banco extends SQLiteOpenHelper {
                 " nome text ," +
                 " camisa integer );" );
 
+        sqLiteDatabase.execSQL( "create table if not exists times ( " +
+                " id integer primary key autoincrement," +
+                " nome text );" );
 
     }
 
+
+
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+        sqLiteDatabase.execSQL("drop table if exists times");
+        onCreate(sqLiteDatabase);
 
     }
 }
