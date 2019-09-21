@@ -24,9 +24,8 @@ public class Time {
         this.nome = nome;
     }
 
-    @NonNull
     @Override
     public String toString() {
-        return nome;
+        return this.nome;
     }
 }

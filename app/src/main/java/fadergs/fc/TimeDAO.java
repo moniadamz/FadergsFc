@@ -39,12 +39,11 @@ public class TimeDAO {
     }
 
     public static List<Time> getTimes(Context contexto){
-        List<Time> listaDeTimes = new ArrayList<>();
+        List<Time> listaDeTimes = new ArrayList<Time>();
         Banco banco = new Banco(contexto);
         SQLiteDatabase db = banco.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM times ORDER BY nome",
-                null);
+        Cursor cursor = db.rawQuery("SELECT * FROM times ORDER BY nome", null);
         if ( cursor.getCount() > 0 ){
             cursor.moveToFirst();
             do{

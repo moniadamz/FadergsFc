@@ -48,13 +48,14 @@ public class FormTimesActivity extends AppCompatActivity {
 
         }else{
             Time timeCriado = new Time();
+            TimeDAO dao = new TimeDAO();
             timeCriado.setNome(nome);
             Toast.makeText(FormTimesActivity.this, timeCriado.getNome(),Toast.LENGTH_SHORT).show();
 
-            TimeDAO.inserir(this, timeCriado);
+            dao.inserir(this, timeCriado);
 
-//            Intent i = new Intent(FormTimesActivity.this, ListaTimesActivity.class);
-//            startActivity( i );
+            Intent i = new Intent(FormTimesActivity.this, ListaTimesActivity.class);
+            startActivity( i );
 
             this.finish();
 
