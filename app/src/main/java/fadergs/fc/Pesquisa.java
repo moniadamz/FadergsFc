@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SimpleAdapter;
+import android.widget.ListView;
 
 import java.util.List;
 
@@ -33,13 +34,18 @@ public class Pesquisa extends AppCompatActivity {
     }
     private void pesquisar(){
         String nome = digitaTime.getText().toString();
-        Time time = TimeDAO.getTimeByName(this, nome);
-
-        if ( time == null ){
+        List<Time> time = TimeDAO.getTimeByName(this, nome);
+        ListView listaTimes = (ListView) findViewById(R.id.ActivityResultadoPesquisa);
+        if ( time.size() == 0 ){
+            listaTimes.setEnabled( false );
             Time fake = new Time();
-            fake.setNome("Item não encontrado.");
+            fake.setNome("Lista Vazia!");
+            time.add( fake );
+        }else {
+            listaTimes.setEnabled( true );
         }
 
-
+        ArrayAdapter<Time> adapter = new ArrayAdapter<Time>(this, android.R.layout.simple_list_item_1, time);
+        listaTimes.setAdapter(adapter);
     }
 }

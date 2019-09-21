@@ -75,25 +75,24 @@ public class TimeDAO {
             return null;
         }
     }
-    public static Time getTimeByName(Context contexto, String nomeTime){
+    public static List<Time> getTimeByName(Context contexto, String nomeTime){
         Banco banco = new Banco(contexto);
         SQLiteDatabase db = banco.getReadableDatabase();
+        List<Time> time = new ArrayList<Time>();
 
         String sql = "SELECT * FROM times where nome = " + nomeTime;
         Cursor cursor = db.rawQuery(sql,null);
 
         if ( cursor.getCount() > 0 ){
             cursor.moveToFirst();
-
-            Time t = new Time();
-            t.setId(  cursor.getInt( 0 ) );
-            t.setNome( cursor.getString( 1 ) );
-
-            return t;
-
-        }else {
-            return null;
+            do{
+                Time t = new Time();
+                t.setId(  cursor.getInt( 0 ) );
+                t.setNome( cursor.getString( 1 ) );
+                time.add( t );
+            }while ( cursor.moveToNext() );
         }
+        return time;
     }
 
 }
