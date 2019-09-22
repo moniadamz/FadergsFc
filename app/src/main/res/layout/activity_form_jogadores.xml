@@ -7,6 +7,13 @@
     android:orientation="vertical">
 
             <EditText
+                android:id="@+id/activityFormJogadoresTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nome do Time"
+                android:layout_margin="8dp"
+                android:inputType="textCapWords"/>
+            <EditText
                 android:id="@+id/activityFormJogadoresNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
