@@ -17,7 +17,7 @@ public class JogadorDAO {
         ContentValues valores = new ContentValues();
         valores.put( "nome", jogador.getNome() );
         valores.put( "camisa", jogador.getCamisa() );
-        valores.put( "idTime", time.getId());
+//        valores.put( "idTime", time.getId());
 
         db.insert("jogadores" , null , valores );
 

@@ -67,6 +67,8 @@ public class ListaTimesActivity extends AppCompatActivity {
                 Time timeClicado = times.get(posicao);
                 Intent formJogadores = new Intent(ListaTimesActivity.this, FormularioActivity.class);
                 formJogadores.putExtra("time", timeClicado);
+//                formJogadores.putExtra("nomeJogador", timeClicado);
+//                formJogadores.putExtra("numeroCamisa", timeClicado);
                 startActivity(formJogadores);
 
                 Log.i("lista", "onItemClick:"+ timeClicado);

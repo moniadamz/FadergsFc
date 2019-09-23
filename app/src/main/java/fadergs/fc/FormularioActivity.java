@@ -36,24 +36,28 @@ public class FormularioActivity extends AppCompatActivity {
         Time time  = (Time) dadosTime.getSerializableExtra("time");
         nomeTime.setText(time.getNome());
 
+        Intent dadosJogadores = getIntent();
+//        Jogador jogador = (Jogador) dadosJogadores.getSerializableExtra("nomeJogador");
+//        nomeJogador.setText(jogador.getNome());
+//        nomeJogador.setText(jogador.getCamisa());
+
         activityFormJogadoresBtSalvar = findViewById(R.id.activityFormJogadoresBtSalvar);
 
         activityFormJogadoresBtSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 salvar();
-                Log.i("tabela jogadores", "onClick: " );
 
 //                Intent i = new Intent(FormularioActivity.this, MainActivity.class);
 //                startActivity( i );
             }
         });
-
     }
 
     private void salvar() {
         String nome = nomeJogador.getText().toString();
         String nCamisa = camisa.getText().toString();
+        Log.i("entrou no salvar", "salvar: "+nome + nCamisa);
 
         if (nome.isEmpty() || nCamisa.isEmpty() ){
             AlertDialog.Builder alerta = new AlertDialog.Builder(this);
@@ -66,6 +70,7 @@ public class FormularioActivity extends AppCompatActivity {
             Jogador jogadorCriado = new Jogador();
             jogadorCriado.setNome(nome);
             jogadorCriado.setCamisa( Integer.valueOf(nCamisa));
+            Log.i("criou jogador", "salvar: " + jogadorCriado);
 
             daoJogador.inserir(this, jogadorCriado, time);
 
