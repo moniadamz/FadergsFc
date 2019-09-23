@@ -8,7 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TimeDAO {
+public class TimeJogadorDAO {
+
 
     public static void inserir(Context contexto, Time time){
         Banco banco = new Banco(contexto);
@@ -55,47 +56,5 @@ public class TimeDAO {
         }
         return listaDeTimes;
     }
-    public static Time getTimeById(Context contexto, int idTime){
-        Banco banco = new Banco(contexto);
-        SQLiteDatabase db = banco.getReadableDatabase();
-
-        String sql = "SELECT * FROM times where id = " + idTime;
-        Cursor cursor = db.rawQuery(sql,null);
-
-        if ( cursor.getCount() > 0 ){
-            cursor.moveToFirst();
-
-                Time t = new Time();
-                t.setId(  cursor.getInt( 0 ) );
-                t.setNome( cursor.getString( 1 ) );
-
-                return t;
-
-        }else {
-            return null;
-        }
-    }
-    public static Time getTimeByName(Context contexto, String nomeTime){
-        Banco banco = new Banco(contexto);
-        SQLiteDatabase db = banco.getReadableDatabase();
-
-        String sql = "SELECT * FROM times where nome = " + nomeTime;
-        Cursor cursor = db.rawQuery(sql,null);
-
-        if ( cursor.getCount() > 0 ){
-            cursor.moveToFirst();
-
-            Time t = new Time();
-            t.setId(  cursor.getInt( 0 ) );
-            t.setNome( cursor.getString( 1 ) );
-
-            return t;
-
-        }else {
-            return null;
-        }
-    }
-
-
 
 }

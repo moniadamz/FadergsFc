@@ -34,10 +34,19 @@ public class MainActivity extends AppCompatActivity {
         pesquisaTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, ListaTimesActivity.class);
+                startActivity( i );
+            }
+        });
+/*
+        pesquisaTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, Pesquisa.class);
                 startActivity( i );
             }
         });
+*/
     }
 
 

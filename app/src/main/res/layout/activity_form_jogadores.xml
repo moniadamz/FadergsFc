@@ -8,25 +8,33 @@
 
             <EditText
                 android:id="@+id/activityFormJogadoresTime"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Nome do Time"
                 android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
                 android:inputType="textCapWords"/>
-            <EditText
-                android:id="@+id/activityFormJogadoresNome"
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nome do Jogador"
-                android:layout_margin="8dp"
-                android:inputType="textCapWords"/>
-            <EditText
-                android:id="@+id/activityFormJogadoresCamisa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Número da Camisa"
-                android:layout_margin="8dp"
-                android:inputType="number"/>
+                android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/activityFormJogadoresNome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Nome do Jogador"
+                        android:layout_margin="8dp"
+                        android:inputType="textCapWords"/>
+                    <EditText
+                        android:id="@+id/activityFormJogadoresCamisa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Camisa"
+                        android:layout_margin="8dp"
+                        android:inputType="number"/>
+            </LinearLayout>
+
             <Button
                 android:id="@+id/activityFormJogadoresBtSalvar"
                 android:layout_width="match_parent"
