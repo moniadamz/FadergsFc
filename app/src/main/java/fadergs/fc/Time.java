@@ -1,8 +1,8 @@
 package fadergs.fc;
 
-import androidx.annotation.NonNull;
+import java.io.Serializable;
 
-public class Time {
+public class Time implements Serializable {
 
     private int id;
     private String nome;
@@ -26,6 +26,6 @@ public class Time {
 
     @Override
     public String toString() {
-        return this.nome;
+        return nome;
     }
 }

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Banco extends SQLiteOpenHelper {
 
-    private static final int VERSAO = 1;
+    private static final int VERSAO = 8;
     private static final String NOME = "FadergsFc";
 
     public Banco(Context contexto){
@@ -15,21 +15,22 @@ public class Banco extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL( "create table if not exists jogadores ( " +
-                " id integer not null primary key autoincrement," +
-                " nome text ," +
-                " camisa integer );" );
 
-        sqLiteDatabase.execSQL( "create table if not exists times ( " +
-                " id integer not null primary key autoincrement," +
-                " nome text );" );
+        String SQL_TIMES = "CREATE TABLE IF NOT EXISTS times (idtime integer NOT NULL PRIMARY KEY AUTOINCREMENT, nome text)";
+        String SQL_JOGADORES =  "CREATE TABLE IF NOT EXISTS jogadores (idjogador integer NOT NULL PRIMARY KEY AUTOINCREMENT, nome text, camisa integer, idTime integer, FOREIGN KEY(idTime) REFERENCES Time(idtime))";
 
+        sqLiteDatabase.execSQL(SQL_TIMES);
+        sqLiteDatabase.execSQL(SQL_JOGADORES);
+
+        sqLiteDatabase.execSQL( "CREATE TABLE IF NOT EXISTS timejogador ( "+" idtimejogador integer NOT NULL PRIMARY KEY AUTOINCREMENT,"+" nometime text ,"+" nomejogador text ,"+" camisa int );" );
     }
-
-
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS timejogador");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS jogadores");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS times");
+        onCreate(sqLiteDatabase);
 
     }
 }

@@ -4,6 +4,10 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class JogadorDAO {
 
@@ -14,8 +18,33 @@ public class JogadorDAO {
         ContentValues valores = new ContentValues();
         valores.put( "nome", jogador.getNome() );
         valores.put( "camisa", jogador.getCamisa() );
+        valores.put( "idTime", jogador.getTime() );
 
         db.insert("jogadores" , null , valores );
+
+    }
+
+    public List<Jogador> getJogadores(Context contexto){
+        List<Jogador> listaDeJogadores = new ArrayList<Jogador>();
+        Banco banco = new Banco(contexto);
+        SQLiteDatabase db = banco.getReadableDatabase();
+
+        String SQL = "SELECT * from jogadores";
+
+        Cursor cursor = db.rawQuery(SQL, null);
+
+        if ( cursor.getCount() > 0 ){
+            cursor.moveToFirst();
+            do{
+                Jogador j = new Jogador();
+                j.setId(  cursor.getInt( 0 ) );
+                j.setNome( cursor.getString( 1 ) );
+                j.setCamisa(cursor.getInt(2));
+                listaDeJogadores.add( j );
+            }while ( cursor.moveToNext() );
+        }
+        Log.i("jogadores do banco", "getJogadores: " + listaDeJogadores);
+        return listaDeJogadores;
     }
 
     public Jogador buscarJogadorPorNome(Context contexto, String nome){
