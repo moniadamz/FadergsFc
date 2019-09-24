@@ -64,11 +64,11 @@ public class ListaTimesActivity extends AppCompatActivity {
         listaTimes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int posicao, long id) {
-                Time timeClicado = times.get(posicao);
+
+                Time timeClicado = (Time) adapterView.getItemAtPosition(posicao);
                 Intent formJogadores = new Intent(ListaTimesActivity.this, FormularioActivity.class);
-                formJogadores.putExtra("time", timeClicado);
-//                formJogadores.putExtra("nomeJogador", timeClicado);
-//                formJogadores.putExtra("numeroCamisa", timeClicado);
+                formJogadores.putExtra("time", timeClicado.getId());
+                formJogadores.putExtra("nomeTime", timeClicado.getNome());
                 startActivity(formJogadores);
 
                 Log.i("lista", "onItemClick:"+ timeClicado);
@@ -82,7 +82,6 @@ public class ListaTimesActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 
     private void excluir(final Time time){

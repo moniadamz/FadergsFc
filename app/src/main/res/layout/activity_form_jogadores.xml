@@ -6,7 +6,7 @@
     tools:context=".FormularioActivity"
     android:orientation="vertical">
 
-            <EditText
+            <TextView
                 android:id="@+id/activityFormJogadoresTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -19,20 +19,18 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                    <EditText
-                        android:id="@+id/activityFormJogadoresNome"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Nome do Jogador"
-                        android:layout_margin="8dp"
-                        android:inputType="textCapWords"/>
-                    <EditText
-                        android:id="@+id/activityFormJogadoresCamisa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Camisa"
-                        android:layout_margin="8dp"
-                        android:inputType="number"/>
+
+               <EditText
+                   android:id="@+id/eTNomeJogador"
+                   android:hint="Nome do Jogador"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"/>
+                <EditText
+                    android:id="@+id/eTCamisaJogador"
+                    android:hint="Camisa do Jogador"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
             </LinearLayout>
 
             <Button

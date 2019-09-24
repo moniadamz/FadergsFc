@@ -4,25 +4,27 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class JogadorDAO {
 
-    public void inserir(Context contexto, Jogador jogador, Time time){
+    public void inserir(Context contexto, Jogador jogador){
         Banco banco = new Banco(contexto);
         SQLiteDatabase db = banco.getWritableDatabase();
 
         ContentValues valores = new ContentValues();
         valores.put( "nome", jogador.getNome() );
         valores.put( "camisa", jogador.getCamisa() );
-//        valores.put( "idTime", time.getId());
+        valores.put( "idTime", jogador.getTime() );
 
         db.insert("jogadores" , null , valores );
 
     }
-    public static List<Jogador> getJogadores(Context contexto){
+
+    public List<Jogador> getJogadores(Context contexto){
         List<Jogador> listaDeJogadores = new ArrayList<Jogador>();
         Banco banco = new Banco(contexto);
         SQLiteDatabase db = banco.getReadableDatabase();
@@ -30,6 +32,7 @@ public class JogadorDAO {
         String SQL = "SELECT * from jogadores";
 
         Cursor cursor = db.rawQuery(SQL, null);
+
         if ( cursor.getCount() > 0 ){
             cursor.moveToFirst();
             do{
@@ -40,6 +43,7 @@ public class JogadorDAO {
                 listaDeJogadores.add( j );
             }while ( cursor.moveToNext() );
         }
+        Log.i("jogadores do banco", "getJogadores: " + listaDeJogadores);
         return listaDeJogadores;
     }
 

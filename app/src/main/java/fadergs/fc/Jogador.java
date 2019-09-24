@@ -1,14 +1,19 @@
 package fadergs.fc;
 
-import java.io.Serializable;
-
-public class Jogador implements Serializable {
+public class Jogador {
     private int id;
     private String nome;
     private int camisa;
+    private int time;
 
     public int getId() {
         return id;
+    }
+
+    public int getTime() { return time; }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public void setId(int id) {

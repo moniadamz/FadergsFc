@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class TimeDAO {
         Banco banco = new Banco(contexto);
         SQLiteDatabase db = banco.getWritableDatabase();
 
-        db.delete("times" , "id = " + idTime, null );
+        db.delete("times" , "idTime = " + idTime , null );
 
     }
 
@@ -80,8 +81,8 @@ public class TimeDAO {
         SQLiteDatabase db = banco.getReadableDatabase();
         List<Time> time = new ArrayList<Time>();
 
-        String sql = "SELECT * FROM times where nome = " + nomeTime;
-        Cursor cursor = db.rawQuery(sql,null);
+//        String sql = "SELECT * FROM times where nome = " + nomeTime;
+        Cursor cursor = db.rawQuery("SELECT * FROM times where nome =  '" + nomeTime + "'", null);
 
         if ( cursor.getCount() > 0 ){
             cursor.moveToFirst();
@@ -92,9 +93,7 @@ public class TimeDAO {
                 time.add( t );
             }while ( cursor.moveToNext() );
         }
+        Log.i("retornando times", "getTimeByName: " + time);
         return time;
     }
-
-
-
 }
