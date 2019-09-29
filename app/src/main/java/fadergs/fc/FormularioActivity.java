@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FormularioActivity extends AppCompatActivity {
@@ -39,7 +38,7 @@ public class FormularioActivity extends AppCompatActivity {
 
         if (ListaJogadores.size() == 0) {
 
-            eTNomeTime = findViewById(R.id.activityFormJogadoresTime);
+            eTNomeTime = findViewById(R.id.jogadoresTime);
             camisa = findViewById(R.id.eTCamisaJogador);
             nomeJogador = findViewById(R.id.eTNomeJogador);
 
@@ -58,7 +57,7 @@ public class FormularioActivity extends AppCompatActivity {
                 }
             });
         }else{
-            eTNomeTime = findViewById(R.id.activityFormJogadoresTime);
+            eTNomeTime = findViewById(R.id.jogadoresTime);
             camisa = findViewById(R.id.eTCamisaJogador);
             nomeJogador = findViewById(R.id.eTNomeJogador);
 

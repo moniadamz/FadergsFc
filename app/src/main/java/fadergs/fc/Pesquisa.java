@@ -35,7 +35,7 @@ public class Pesquisa extends AppCompatActivity {
     private void pesquisar(){
         String nome = digitaTime.getText().toString();
         List<Time> time = TimeDAO.getTimeByName(this, nome);
-        ListView listaTimes = (ListView) findViewById(R.id.ActivityResultadoPesquisa);
+        ListView listaTimes = (ListView) findViewById(R.id.resultadoPesquisa);
         if ( time.size() == 0 ){
             listaTimes.setEnabled( false );
             Time fake = new Time();
