@@ -20,7 +20,6 @@ import java.util.List;
 
 public class ListaTimesActivity extends AppCompatActivity {
 
-    public static final String TITULO_APPBAR = "Lista de Times";
     private TimeDAO dao = new TimeDAO();
 
     @Override
@@ -28,7 +27,7 @@ public class ListaTimesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_times);
 
-        setTitle(TITULO_APPBAR);
+        setTitle(getResources().getString(R.string.titleAppBarList));
 
         configuraFabNovoTime();
     }

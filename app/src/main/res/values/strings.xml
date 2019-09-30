@@ -2,7 +2,18 @@
     <string name="app_name">FadergsFc</string>
     <string name="searchButton">Pesquisar</string>
     <string name="saveButton">Salvar</string>
-    <string name="hintPlayer">Name of Player</string>
-    <string name="hintTshirt">Number of T-Shirt</string>
+    <string name="hintPlayer">Nome do Jogador</string>
+    <string name="hintTshirt">Número da Camisa</string>
     <string name="registerButton">Cadastrar</string>
+    <string name="teamName">Nome do Time</string>
+    <string name="titleAppBarList">Lista de Times</string>
+    <string name="titleAppBarAdd">Adicionando Times</string>
+    <string name="titleAppBarPlayer">Adicionando Jogadores</string>
+    <string name="search">Pesquisa</string>
+    <string name="alertDelete">Excluir Time</string>
+    <string name="alertMessage">Confirma a exclusão do Time</string>
+    <string name="alertNeutralButton">Cancelar</string>
+    <string name="positiveButton">Sim</string>
+
+
 </resources>

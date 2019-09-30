@@ -21,6 +21,13 @@ public class JogadorDAO {
 
         db.insert("jogadores" , null , valores );
     }
+    public static void excluir(Context contexto, int idJogador){
+        Banco banco = new Banco(contexto);
+        SQLiteDatabase db = banco.getWritableDatabase();
+
+        db.delete("jogadores" , "idjogador = " + idJogador , null );
+
+    }
 
     public static List<Jogador> getJogadores(Context contexto){
         List<Jogador> listaDeJogadores = new ArrayList<Jogador>();

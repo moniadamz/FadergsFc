@@ -1,5 +1,7 @@
 package fadergs.fc;
 
+import androidx.annotation.NonNull;
+
 public class Jogador {
     private int id;
     private String nome;
@@ -34,6 +36,9 @@ public class Jogador {
 
     public void setTime(int time) { this.time = time; }
 
+    @NonNull
+    @Override
+    public String toString() { return nome + "-" + camisa; }
 }
 
 

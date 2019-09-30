@@ -22,7 +22,7 @@ public class Pesquisa extends AppCompatActivity {
         pesquisar = findViewById(R.id.pesquisaTime);
         digitaTime = findViewById(R.id.digitaTime);
 
-        setTitle("Pesquisa");
+        setTitle(getResources().getString(R.string.search));
 
         pesquisar.setOnClickListener(new View.OnClickListener() {
             @Override

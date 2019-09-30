@@ -1,9 +1,10 @@
 package fadergs.fc;
 
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,10 +13,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -32,12 +29,7 @@ public class FormularioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_jogadores);
-        setTitle("Adicionando Jogadores ao time ");
-
-//        ListaJogadores = daoJogador.getJogadores(this);
-//        Log.i("Lista de jogadores", "onCreate: Buscando jogadores" + ListaJogadores);
-
-//        if (ListaJogadores.size() == 0) {
+        setTitle(getResources().getString(R.string.titleAppBarPlayer));
 
         eTNomeTime = findViewById(R.id.jogadoresTime);
         camisa = findViewById(R.id.eTCamisaJogador);
@@ -47,8 +39,6 @@ public class FormularioActivity extends AppCompatActivity {
         nomeTime = getIntent().getExtras().getString("nomeTime");
         eTNomeTime.setText(nomeTime);
 
-        Log.i("IdTime", "onCreate: " + idTime);
-
         activityFormJogadoresBtSalvar = findViewById(R.id.activityFormJogadoresBtSalvar);
 
         activityFormJogadoresBtSalvar.setOnClickListener(new View.OnClickListener() {
@@ -57,20 +47,6 @@ public class FormularioActivity extends AppCompatActivity {
                 salvar();
             }
         });
-//        }else{
-//            Log.i("Else", "onCreate: Entrou no else para digitar pegar times" + eTNomeTime);
-//            eTNomeTime = findViewById(R.id.jogadoresTime);
-//            camisa = findViewById(R.id.eTCamisaJogador);
-//            nomeJogador = findViewById(R.id.eTNomeJogador);
-
-//        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-//        configuraLista();
     }
 
     @Override
@@ -82,7 +58,6 @@ public class FormularioActivity extends AppCompatActivity {
     private void salvar() {
         String nome = nomeJogador.getText().toString();
         String nCamisa = camisa.getText().toString();
-        Log.i("entrou no salvar", "salvar jogadores: " + nome + nCamisa);
 
         if (nome.isEmpty() || nCamisa.isEmpty()) {
             AlertDialog.Builder alerta = new AlertDialog.Builder(this);
@@ -98,21 +73,38 @@ public class FormularioActivity extends AppCompatActivity {
             jogadorCriado.setTime(idTime);
 
             daoJogador.inserir(this, jogadorCriado);
-//            startActivity(new Intent(FormularioActivity.this, ListaTimesActivity.class));
             finish();
         }
     }
 
     private void carregarLista() {
-//        List<Jogador> lista = JogadorDAO.getJogadoresById(this, idTime);
 
         ListView listaJogadores = findViewById(R.id.form_Activity_Lv_Jogadores);
         ArrayAdapter<Jogador> adapter = new ArrayAdapter<Jogador>(this, android.R.layout.simple_list_item_1, daoJogador.getJogadoresById(this, idTime));
 
         listaJogadores.setAdapter(adapter);
-//        Log.i("Carregar lista", "carregarLista da dao: " + lista);
-//        Log.i("carregar lista ", "carregarLista de jgadores: "+ listaJogadores);
-
+        listaJogadores.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int posicao, long id) {
+                excluir((Jogador) adapterView.getItemAtPosition(posicao));
+                return true;
+            }
+        });
+    }
+    private void excluir(final Jogador jogador){
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setTitle(getResources().getString(R.string.alertDelete));
+        alerta.setMessage(getResources().getString(R.string.alertMessage) + jogador.getNome() + "?");
+        alerta.setNeutralButton(getResources().getString(R.string.alertNeutralButton), null);
+        alerta.setPositiveButton(getResources().getString(R.string.positiveButton), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                JogadorDAO.excluir(FormularioActivity.this, jogador.getId());
+                carregarLista();
+            }
+        });
+        alerta.show();
 
     }
+
 }

@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class FormTimesActivity extends AppCompatActivity {
 
-    public static final String TITULO_APPBAR = "Adicionando Times";
     private TimeDAO dao = new TimeDAO();
     private EditText etNome;
     private Button btnSalvar;
@@ -24,7 +23,7 @@ public class FormTimesActivity extends AppCompatActivity {
         etNome = findViewById(R.id.activityFormTimesNome);
         btnSalvar = findViewById(R.id.activityFormTimesBtSalvar);
 
-        setTitle(TITULO_APPBAR);
+        setTitle(getResources().getString(R.string.titleAppBarAdd));
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
