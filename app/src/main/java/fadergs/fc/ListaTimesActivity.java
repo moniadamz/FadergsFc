@@ -22,7 +22,6 @@ public class ListaTimesActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Lista de Times";
     private TimeDAO dao = new TimeDAO();
-    private ListView lvTimes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
