@@ -10,12 +10,6 @@ public class Jogador {
         return id;
     }
 
-    public int getTime() { return time; }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -35,6 +29,11 @@ public class Jogador {
     public void setCamisa(int camisa) {
         this.camisa = camisa;
     }
+
+    public int getTime() { return time; }
+
+    public void setTime(int time) { this.time = time; }
+
 }
 
 

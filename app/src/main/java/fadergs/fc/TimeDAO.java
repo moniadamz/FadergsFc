@@ -82,7 +82,7 @@ public class TimeDAO {
         List<Time> time = new ArrayList<Time>();
 
 //        String sql = "SELECT * FROM times where nome = " + nomeTime;
-        Cursor cursor = db.rawQuery("SELECT * FROM times where nome =  '" + nomeTime + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM times where nome like '" + nomeTime + "'", null);
 
         if ( cursor.getCount() > 0 ){
             cursor.moveToFirst();

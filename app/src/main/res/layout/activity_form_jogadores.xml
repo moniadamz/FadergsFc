@@ -23,11 +23,13 @@
                <EditText
                    android:id="@+id/eTNomeJogador"
                    android:hint="Nome do Jogador"
+                   android:inputType="textCapWords"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"/>
                 <EditText
                     android:id="@+id/eTCamisaJogador"
                     android:hint="Camisa do Jogador"
+                    android:inputType="number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -40,5 +42,10 @@
                 android:layout_margin="8dp"
                 android:text="@string/saveButton"
                 android:background="#488B4A" />
+
+    <ListView
+        android:id="@+id/form_Activity_Lv_Jogadores"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

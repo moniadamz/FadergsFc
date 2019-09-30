@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,17 +20,14 @@ public class JogadorDAO {
         valores.put( "idTime", jogador.getTime() );
 
         db.insert("jogadores" , null , valores );
-
     }
 
-    public List<Jogador> getJogadores(Context contexto){
+    public static List<Jogador> getJogadores(Context contexto){
         List<Jogador> listaDeJogadores = new ArrayList<Jogador>();
         Banco banco = new Banco(contexto);
         SQLiteDatabase db = banco.getReadableDatabase();
 
-        String SQL = "SELECT * from jogadores";
-
-        Cursor cursor = db.rawQuery(SQL, null);
+        Cursor cursor = db.rawQuery("SELECT * FROM jogadores", null);
 
         if ( cursor.getCount() > 0 ){
             cursor.moveToFirst();
@@ -40,10 +36,32 @@ public class JogadorDAO {
                 j.setId(  cursor.getInt( 0 ) );
                 j.setNome( cursor.getString( 1 ) );
                 j.setCamisa(cursor.getInt(2));
+                j.setTime(cursor.getInt(3));
                 listaDeJogadores.add( j );
             }while ( cursor.moveToNext() );
         }
-        Log.i("jogadores do banco", "getJogadores: " + listaDeJogadores);
+//        Log.i("jogadores do banco", "getJogadores: " + listaDeJogadores);
+        return listaDeJogadores;
+    }
+    public static List<Jogador> getJogadoresById(Context contexto, int idTime){
+        List<Jogador> listaDeJogadores = new ArrayList<Jogador>();
+        Banco banco = new Banco(contexto);
+        SQLiteDatabase db = banco.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM jogadores where idTime=" + idTime, null);
+
+        if ( cursor.getCount() > 0 ){
+            cursor.moveToFirst();
+            do{
+                Jogador j = new Jogador();
+                j.setId(  cursor.getInt( 0 ) );
+                j.setNome( cursor.getString( 1 ) );
+                j.setCamisa(cursor.getInt(2));
+                j.setTime(cursor.getInt(3));
+                listaDeJogadores.add( j );
+            }while ( cursor.moveToNext() );
+        }
+//        Log.i("jogadores do banco", "getJogadores: " + listaDeJogadores);
         return listaDeJogadores;
     }
 
